@@ -19,7 +19,7 @@ static async Task Main(string[] args)
 
 	var delay = 5000;
 	var task = new Task(() => HandlerAsync(source.Token)
-		.ContinueWith(ex => { ex.Exception.Handle(e => true); Console.WriteLine("Canceled"); }, TaskContinuationOptions.OnlyOnCanceled));
+		.ContinueWith(ex => { ex.Exception.Handle(e => true); }, TaskContinuationOptions.OnlyOnCanceled));
 
 	task.Start();
 

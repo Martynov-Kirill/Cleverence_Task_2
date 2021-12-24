@@ -20,19 +20,19 @@ namespace NET_Framework
 			Console.WriteLine("Exit Handler");
 		}
 
-		private static void Run()
+		private void Run()
 		{
 			EventHandler h = new EventHandler(DoSomeWork);
-			//AsyncCaller ac = new AsyncCaller(h);
-			//if (ac.Invoke(5000, this, EventArgs.Empty))
-			//	Console.WriteLine("Completed successfully");
-			//else
-			//	Console.WriteLine("Timeout occured");
+			AsyncCaller ac = new AsyncCaller(h);
+			if (ac.Invoke(5000, this, EventArgs.Empty))
+				Console.WriteLine("Completed successfully");
+			else
+				Console.WriteLine("Timeout occured");
 		}
 
 		static void Main(string[] args)
 		{
-			Run();
+			new Program().Run();
 			Console.WriteLine("Done.");
 			Console.ReadKey();
 		}
